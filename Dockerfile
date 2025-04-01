@@ -12,8 +12,8 @@ RUN apt-get update && apt install -y --no-install-recommends software-properties
     useradd -ms /bin/bash wqy && \
     sed -i 's/^\($ModLoad imklog\)/#\1/' /etc/rsyslog.conf && \
     rm -rf /var/lib/apt/lists/* && \
-    rm -f /lib/systemd/system/systemd*udev* && \
-    rm -f /lib/systemd/system/getty.target
+    rm -rf /lib/systemd/system/systemd*udev* && \
+    rm -rf /lib/systemd/system/getty.target
 
 STOPSIGNAL SIGRTMIN+3
 
