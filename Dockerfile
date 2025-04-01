@@ -19,4 +19,5 @@ WORKDIR /home/ubuntu
 RUN wget 'https://go.dev/dl/go1.23.7.linux-amd64.tar.gz' && \
     tar zvxf go1.23.7.linux-amd64.tar.gz && \
     mv go /home/ubuntu/go && \
-    echo "PATH=$HOME/go/bin:$PATH" >> ~/.bashrc && \
+    rm -rf go1.23.7.linux-amd64.tar.gz && \
+    echo "PATH=$HOME/go/bin:$PATH" >> ~/.bashrc
