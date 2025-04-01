@@ -14,8 +14,6 @@ ENV LD_LIBRARY_PATH=/usr/lib/wsl/lib
 
 RUN apt install -y openssh-server openssh-client wget vim chromium-browser
 
-RUN useradd -ms /bin/bash ubuntu
-
 USER ubuntu
 
 WORKDIR /home/ubuntu
