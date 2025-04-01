@@ -8,13 +8,15 @@ RUN apt-get update && apt install -y software-properties-common && \
     add-apt-repository ppa:oibaf/graphics-drivers -y && \
     apt update && apt install -y vainfo mesa-va-drivers && \
     apt install -y openssh-server openssh-client wget vim chromium-browser && \
+    userdel -r ubuntu && \
+    useradd -ms /bin/bash wqy && \
     rm -rf /var/lib/apt/lists/*
 
-RUN echo "root   ALL=(ALL)       ALL" >> /etc/sudoers
+RUN echo "wqy   ALL=(ALL)       ALL" >> /etc/sudoers
 
-USER ubuntu
+USER wqy
 
-WORKDIR /home/ubuntu
+WORKDIR /home/wqy
 
 RUN wget 'https://go.dev/dl/go1.23.7.linux-amd64.tar.gz' && \
     tar zvxf go1.23.7.linux-amd64.tar.gz && \
