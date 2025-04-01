@@ -7,19 +7,10 @@ ENV LD_LIBRARY_PATH=/usr/lib/wsl/lib
 RUN apt-get update && apt install -y --no-install-recommends software-properties-common && \
     add-apt-repository ppa:oibaf/graphics-drivers -y && \
     apt update && apt install -y --no-install-recommends vainfo mesa-va-drivers && \
-    apt install -y --no-install-recommends rsyslog systemd systemd-cron sudo openssh-server openssh-client wget vim chromium-browser && \
+    apt install -y --no-install-recommends sudo openssh-server openssh-client wget vim chromium-browser && \
     userdel -r ubuntu && \
     useradd -ms /bin/bash wqy && \
-    sed -i 's/^\($ModLoad imklog\)/#\1/' /etc/rsyslog.conf && \
-    rm -rf /var/lib/apt/lists/* && \
-    rm -rf /lib/systemd/system/systemd*udev* && \
-    rm -rf /lib/systemd/system/getty.target
-
-STOPSIGNAL SIGRTMIN+3
-
-VOLUME ["/sys/fs/cgroup"]
-
-CMD ["/sbin/init"]
+    rm -rf /var/lib/apt/lists/*
 
 RUN echo "wqy   ALL=(ALL)       ALL" >> /etc/sudoers
 
